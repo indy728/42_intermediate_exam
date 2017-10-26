@@ -1,5 +1,3 @@
-#include <unistd.h>
-
 struct s_node {
 	int				value;
 	struct s_node	**nodes;
