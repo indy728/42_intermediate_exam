@@ -1,3 +1,10 @@
+#include <unistd.h>
+
+struct s_node {
+	int				value;
+	struct s_node	**nodes;
+};
+
 int	ft_max(int a, int b)
 {
 	return (a >= b ? a : b);
@@ -11,6 +18,8 @@ int	go_deeper(struct s_node *node, int height)
 
 	max = height;
 	arr = node->nodes;
+	if (!arr)
+		return (height);
 	i = -1;
 	while (arr[++i])
 		max = ft_max(max, go_deeper(arr[i], height + 1));
