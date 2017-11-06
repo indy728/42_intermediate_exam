@@ -24,6 +24,22 @@
 
 void	print_doublon(int *a, int na, int *b, int nb);
 
+void	print_arrays(int *x, int a, int *y, int b)
+{
+	int i = -1;
+	printf(BOLD"ARRAY 1: [ ");
+	while (++i < a)
+		printf("%s%d", i > 0 ? ", " : "", x[i]);
+	printf(" ]\n");
+	i = -1;
+	printf("ARRAY 2: [ ");
+	while (++i < b)
+		printf("%s%d", i > 0 ? ", " : "", y[i]);
+	printf(" ]\n"RESET);
+}
+
+#define SEPARATOR "\x1b[0m\n----------------------------------------------------------\n\n"
+
 int main()
 {
 		int	a[] = {1, 2, 10, 15};
@@ -37,18 +53,27 @@ int main()
 		int i[] = {6, 5, 4, 3};
 		int j[] = {20, 8, 5, 3};
 
+		print_arrays(a, 4, b, 4);
 		printf(YELLOW"Expected: 2\n");
 		printf(GREEN"Output:   ");
 		print_doublon(a, 4, b, 4);
+		printf(SEPARATOR);
+		print_arrays(c, 11, d, 8);
 		printf(YELLOW"Expected: 2 10 70\n");
 		printf(GREEN"Output:   ");
 		print_doublon(c, 11, d, 8);
+		printf(SEPARATOR);
+		print_arrays(e, 3, f, 4);
 		printf(YELLOW"Expected: \n");
 		printf(GREEN"Output:   ");
 		print_doublon(e, 3, f, 4);
+		printf(SEPARATOR);
+		print_arrays(g, 4, h, 4);
 		printf(YELLOW"Expected: 3 4\n");
 		printf(GREEN"Output:   ");
 		print_doublon(g, 4, h, 4);
+		printf(SEPARATOR);
+		print_arrays(i, 4, j, 4);
 		printf(YELLOW"Expected: 3 5\n");
 		printf(GREEN"Output:   ");
 		print_doublon(i, 4, j, 4);
