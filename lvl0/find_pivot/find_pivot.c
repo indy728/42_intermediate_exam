@@ -1,48 +1,37 @@
-int	sum_greater_than(int *arr, int q, int n)
+static int	sum(int *arr, int n)
 {
+	int	i = 0;
 	int sum = 0;
 
-	while (++q < n)
-		sum += arr[q];
-	return (sum);
-}
-
-int	sum_less_than(int *arr, int q)
-{
-	int sum = 0;
-
-	while (--q >= 0)
-		sum += arr[q];
+	while (++i < n)
+	{
+		sum += arr[i];
+	}
 	return (sum);
 }
 
 int	find_pivot(int *arr, int n)
 {
-	int q = n / 2;
-	int flag = 0;
-	int less;
-	int greater;
-	int min = 0;
-	int max = n;
+	int i = 0;
+	int l = 0;
+	/* pivot starts at zero, r represents the sum of everything to the right of zero */
+	int r = sum(arr, n);
 
-	if (n < 3)
+	/* the problem says this will never be a case */
+	if (!arr || n == 0)
 		return (-1);
-	while(max - min > 1)
-	{
-		less = sum_less_than(arr, q);
-		greater = sum_greater_than(arr, q, n);
-		if (less < greater)
-		{
-			min = q;
-			q = q + (max - q) / 2;
-		}
-		else if (less > greater)
-		{
-			max = q;
-			q = min + (q - min) / 2;
-		}
-		else
-			return (q);
+
+	if (l == r)
+		return (0);
+	/* iterate through one time [second time overall --> O(2n) == O(n)],
+	   as we increment, l changes by the value at previous pivot location,
+	   r changes by the value of the current pivot */
+	while (++i < n)
+	{		
+		l += arr[i - 1];
+		r -= arr[i];
+		if (r == l)
+			return (i);
 	}
 	return (-1);
 }
