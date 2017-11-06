@@ -10,7 +10,7 @@ int main()
 	int	result[] = {0, 0, 0, 1, 2, 9, 15, 32, 308, 314541};
 	int	i = -1;
 
-	printf("\n\n%s\n\n", separate);
+	printf("%s\n\n", separate);
 	while (++i < 10)
 	{
 		printf("input: %d\noutput: %d\nresult: %s\n\n%s\n\n", arr[i],

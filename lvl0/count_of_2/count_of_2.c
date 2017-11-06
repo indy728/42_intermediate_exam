@@ -4,9 +4,11 @@ int	count_of_2(int n)
 	int j = 0;
 	int	k;
 	
+	/* checks each number from 2 to input n */
 	while (i <= n)
 	{
 		k = i;
+		/* checks each decimal place for a 2 */
 		while (k)
 		{
 			if (k % 10 == 2)
