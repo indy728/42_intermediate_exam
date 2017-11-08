@@ -21,14 +21,14 @@ static t_node	*duplicate_list(t_node *node)
 	return (new);
 }
 
-static void				set_other(t_node *new, t_node *old, t_node *other, t_node *set)
+static void				set_other(t_node *dupe, t_node *node, t_node *old, t_node *new)
 {
-	while (old && !set->other)
+	while (node && !new->other)
 	{
-		if (old == other->other)
-			set->other = new;
-		new = new->next;
-		old = old->next;
+		if (node == old->other)
+			new->other = dupe;
+		dupe = dupe->next;
+		node = node->next;
 	}
 }
 
