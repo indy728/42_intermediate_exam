@@ -50,7 +50,7 @@ int	gold_gain(int **mine, int n)
 						gg[i + 1][j - 1]);
 			/* the cells in the last column keep the max value of the 
 			   current cell and the one above it */
-			if (j == -1)
+			if (j == n - 1)
 				gg[i][j] = max2(gg[i][j], gg[i - 1][j]);
 		}
 		
