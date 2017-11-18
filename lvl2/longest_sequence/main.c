@@ -61,10 +61,10 @@ int main()
 
 	ans = 0;
 	output = longest_sequence(NULL);
-	printf(BOLD"NULL TEST\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"NULL TEST\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 	ans = 1;
 	output = longest_sequence(root);
-	printf(BOLD"SINGLE NODE\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"SINGLE NODE\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 	tmp->left = create_node(5);
 	tmp = tmp->left;
 	tmp->left = create_node(6);
@@ -74,7 +74,7 @@ int main()
 
 	ans = 3;
 	output = longest_sequence(root);
-	printf(BOLD"EXAMPLE 1\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"EXAMPLE 1\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 
 	root->right = root->left;
 	root->left = create_node(6);
@@ -88,7 +88,7 @@ int main()
 
 	ans = 2;
 	output = longest_sequence(root);
-	printf(BOLD"EXAMPLE 2\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"EXAMPLE 2\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 
 	root->value = 30;
 	root->left->value = 15;
@@ -99,7 +99,7 @@ int main()
 	
 	ans = 1;
 	output = longest_sequence(root);
-	printf(BOLD"EXAMPLE 3\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"EXAMPLE 3\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 
 	root->right = create_node(1);
 	root->left = create_node(31);
@@ -143,5 +143,5 @@ int main()
 
 	ans = 9;
 	output = longest_sequence(root);
-	printf(BOLD"BIG & WIDE\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n", ans, output == ans ? GREEN : RED, output);
+	printf(BOLD"BIG & WIDE\n"RESET""YELLOW"Expected: %d\n"GREEN"Output: %s%d\n"RESET, ans, output == ans ? GREEN : RED, output);
 }
