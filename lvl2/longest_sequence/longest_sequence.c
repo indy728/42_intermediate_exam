@@ -20,13 +20,8 @@ void	penetrate_deep(t_node *last, t_node *this, int seq, int *n)
 {
 	if (this)
 	{
-		if (this->value - last->value == 1)
-		{
-			*n = ft_max(*n, seq + 1);
-			seq += 1;
-		}
-		else
-			seq = 1;
+		seq = (this->value - last->value == 1) ? seq + 1 : 1;
+		*n = ft_max(*n, seq);
 		penetrate_deep(this, this->left, seq, n);
 		penetrate_deep(this, this->right, seq, n);
 	}
