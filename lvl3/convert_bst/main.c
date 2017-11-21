@@ -38,8 +38,6 @@ struct s_node	*create_node(int value)
 	return (new);
 }
 
-struct s_node	*convert_bst(struct s_node *bst);
-
 void	print_tree(struct s_node *root)
 {
 	if (root)
@@ -50,17 +48,38 @@ void	print_tree(struct s_node *root)
 	}
 }
 
-void	print_list(struct s_node *root)
+void	print_list_n(struct s_node *root, int n)
 {
-	while (root)
+	struct s_node	*tmp = root;
+	int				i = 0;
+
+	printf(BOLD"Printing circular list %d times: \n"RESET, n);
+	while (tmp && i < n)
 	{
-		printf("%d ", root->value);
-		root = root->right;	
+		printf(CYAN"%d "RESET, tmp->value);
+		tmp = tmp->right;
+		if (tmp == root)
+			++i;
 	}
 	printf("\n");
 }
 
-void	insert(struct s_node **root, struct s_node *new);
+void	insert(struct s_node **root, struct s_node *new)
+{
+	if (!*root)
+		*root = new;
+	else
+	{
+		int value = (*root)->value - new->value;
+		
+		if (value > 0)
+			insert(&(*root)->left, new);
+		else
+			insert(&(*root)->right, new);
+	}
+}
+
+struct s_node	*convert_bst(struct s_node *bst);
 
 int main()
 {
@@ -68,62 +87,18 @@ int main()
 	struct s_node	*tmp = root;
 	struct s_node	*split;
 
-	tmp->left = create_node(2);
-	tmp->right = create_node(6);
-	tmp = tmp->left;
-	tmp->left = create_node(1);
-	tmp->right = create_node(3);
-	tmp = root->right;
-	tmp->left = create_node(5);
-	tmp->right = create_node(7);
+	insert(&root, create_node(2));
+	insert(&root, create_node(6));
+	insert(&root, create_node(1));
+	insert(&root, create_node(3));
+	insert(&root, create_node(5));
+	insert(&root, create_node(7));
+	insert(&root, create_node(8));
+	insert(&root, create_node(10));
+	insert(&root, create_node(9));
 
+	printf(BOLD"In order tree:\n"RESET""MAGENTA);
 	print_tree(root);
-	printf("\n");
-	print_list(convert_bst(root));
-/*	tmp = root;
-	tmp->right = create_node(26);
-	tmp = tmp->right;
-	tmp->right = create_node(64);
-	split = tmp->right;
-	split->left = create_node(40);
-	split->right = create_node(78);
-	
-	tmp = split->right;
-	tmp->right = create_node(85);
-	tmp->left = create_node(2);
-	tmp->right->right = create_node(51);
-	tmp = tmp->left;
-	tmp->left = create_node(33);
-	tmp->left->right = create_node(55);
-	tmp->right = create_node(11);
-	tmp->right->left = create_node(99);
-
-	split = split->left;
-	split->left = create_node(88);
-	split->right = create_node(10);
-	
-	tmp = split->left;
-	tmp->left = create_node(12);
-	tmp->left->left = create_node(58);
-	tmp->right = create_node(55);
-	tmp = tmp->right;
-	tmp->left = create_node(58);
-	tmp->right = create_node(41);
-	
-	tmp = split->right;
-	tmp->left = create_node(52);
-	tmp->right = create_node(87);
-	tmp->right->right = create_node(31);
-	tmp = tmp->left;
-	tmp->left = create_node(22);
-	tmp->right = create_node(35);
-
-
-	print_tree(root);
-	printf("\n");
-	root = convert_bst(root);
-	print_list(root);
-	printf("\n");
-	printf(RESET);*/
-
+	printf("\n"RESET);
+	print_list_n(convert_bst(root), 10);
 }
