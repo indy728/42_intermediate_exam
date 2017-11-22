@@ -21,5 +21,8 @@ int main()
 	s1 = strdup("abca");
 	s2 = strdup("bcab");
 	printf("String 1: %s\nString2: %s\nOutput: %d\nAnswer: %d\n", s1, s2, is_anagram(s1, s2), 0);
+	s1 = strdup("  123~~");
+	s2 = strdup("~~31~ 2 ");
+	printf("String 1: %s\nString2: %s\nOutput: %d\nAnswer: %d\n", s1, s2, is_anagram(s1, s2), 0);
 	return (0);
 }
