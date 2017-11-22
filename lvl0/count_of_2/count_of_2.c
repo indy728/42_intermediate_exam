@@ -1,11 +1,11 @@
 int	count_of_2(int n)
 {
-	int i = 2;
+	int i = 1;
 	int j = 0;
 	int	k;
 	
 	/* checks each number from 2 to input n */
-	while (i <= n)
+	while (++i <= n)
 	{
 		k = i;
 		/* checks each decimal place for a 2 */
@@ -15,7 +15,6 @@ int	count_of_2(int n)
 				++j;
 			k /= 10;
 		}
-		++i;
 	}
 	return (j);
 }
