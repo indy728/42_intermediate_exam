@@ -36,6 +36,7 @@ void	destroy_tree(t_tree *root)
 		destroy_tree(root->right);
 		free(root->str);
 		free(root);
+		root = NULL;
 	}
 }
 

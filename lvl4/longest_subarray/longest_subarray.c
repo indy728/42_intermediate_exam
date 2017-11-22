@@ -13,24 +13,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-int		is_odd(int c)
-{
-	return (c & 1);
-}
-
-int	ft_ctoi(char c)
-{
-	return (c - '0');
-}
-
-char	is_equal(char *str, int i, int len)
+char	is_equal(char *str, int len)
 {
 	int odd = 0;
 	int even = 0;
-	int j = -1;
-	while (++j < len)
+	int i = -1;
+
+	while (++i < len)
 	{
-		if (is_odd(ft_ctoi(str[i + j])))
+		if ((str[i] - '0') % 2)
 			++odd;
 		else
 			++even;
@@ -38,35 +29,33 @@ char	is_equal(char *str, int i, int len)
 	return(odd == even ? 1 : 0);
 }
 
+char	*subarray(char *str, int len)
+{
+	char	*new = (char *)malloc(len + 1);
+	int		i = -1;
+
+	new[len] = 0;
+	while (++i < len)
+		new[i] = str[i];
+	return (new);
+}
+
 char *longest_subarray(char *arr)
 {
-	int whole = strlen(arr);
-	int len = whole;
-	if (is_odd(len))
-		--len;
+	int len = strlen(arr);
+	int sub = len % 2 ? len - 1 : len;
 	int i;
-	int j = len - 1;
-	int k = -1;
-	char *str;
 	
-	while (len > 1)
+	while (sub > 1)
 	{
-		i = -1;
-		while (++i + len - 1 < whole)
+		i = 0;
+		while (sub + i <= len)
 		{
-			if (is_equal(arr, i, len))
-			{
-				str = (char *)malloc(len + 1);
-				str[len] = 0;
-				while (++k < len)
-					str[k] = arr[i + k];
-				return (str);
-			}
+			if (is_equal(arr + i, sub))
+				return (subarray(arr + i, sub));
+			++i;
 		}
-		len -= 2;
+		sub -= 2;
 	}
-	str = (char *)malloc(1);
-	str[0] = 0;
-	return (str);
-
+	return (subarray(NULL, 0));
 }

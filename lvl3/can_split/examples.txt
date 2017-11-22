@@ -1,0 +1,50 @@
+Example 1:
+
+       28
+       /
+      51
+     / \
+    /   \
+   26   48
+  / \
+ /   \
+76   13
+
+In this case, it should return 1 (remove the edge between 51 and 26 will split the tree
+in 2 trees with each a size of 3).
+
+
+Example 2: 
+
+    30
+    / \
+   /   \
+  15   41
+ /     /
+61    80
+
+In this case, it should return 0 (you can't split the tree and make 2 trees with the
+same size).
+
+
+Example 3:
+
+10
+  \
+   12
+
+In this case, your function return 1.
+
+
+Example 4:
+
+   5
+  / \
+ /   \
+1     6    
+    /  \
+   7    4
+ /  \    \
+3    2    8
+
+In this case, your function should return 0.
